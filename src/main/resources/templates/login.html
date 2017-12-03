@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Spring Security Example</title>
+	<script th:src='@{/js/all_plugin.js}'></script>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/signin.css}"> 
+</head>
+<body>
+	<div class='container'>
+		<form th:action="@{/login}" method="post" class='form-signin' _lpchcecked='1'>
+			<h2 class='form-signin-heading'>Spring Boot Starter</h2>
+			<div>
+				<label for='inputEamil'class="sr-only">帳號</label>
+				<input type="text" class='form-control' name="user_id" placeholder='帳號'/>
+			</div>
+			<div>
+				<label for='inputPassword'class="sr-only">密碼</label>
+				<input type="password" class='form-control' name="user_password" placeholder='密碼'/>
+			</div>
+			<div>
+				<input type="submit" class="btn btn-lg btn-primary btn-block" value="登入" />
+				<button id='' class="btn btn-lg btn-info btn-block">註冊</button>
+			</div>
+			<div th:if="${param.error}">
+				<p style="font-size: 25; color: red;">登入失敗</p>
+			</div>
+		</form>
+		<p class='form-signin-heading'>前端：Vue-cli, Vue-router, Axios</p>
+		<p class='form-signin-heading'>後端：SpringBoot, Hibernate</p>
+		<p class='form-signin-heading'>資料庫：MySQL</p>
+		<img th:src='@{/images/spring_boot.png}' width="120" height="40">+
+		<img th:src='@{/images/vue.png}' width="60" height="60">
+		<br/>
+		<a href="https://github.com/runkids/Vue.js-and-Spring-Boot-Starter" target="_blank">Get Source Code Here!</a>
+	</div>
+</body>
+</html>

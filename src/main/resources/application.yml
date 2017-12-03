@@ -1,0 +1,56 @@
+spring: 
+# ===============================
+# = DATA SOURCE
+# ===============================
+  datasource: 
+    driver-class-name: com.mysql.jdbc.Driver 
+    url: jdbc:mysql://localhost:3306/spring_boot 
+    username: root 
+    password: sysadm
+    
+# ===============================
+# = JPA / HIBERNATE
+# ===============================
+  jpa: 
+    properties: 
+      hibernate: 
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+    hibernate:  
+      naming: 
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      ddl-auto: update  #若要自動初始化DB資料的話用create 不要每次重置數據改成update即可
+
+# ===============================
+# = Thymeleaf configurations
+# ===============================
+  thymeleaf: 
+    mode: LEGACYHTML5
+    cache: false
+# ===============================
+# = Servlet setting
+# ===============================
+server: 
+  port: 8087
+  session:
+    timeout: 3600
+    
+# ===============================
+# = 自定義參數
+# ===============================
+admin: 
+  account: admin_acc
+  password: admin_pwd
+queries: 
+  users-query: select user_id, user_password, user_type from spring_boot_user where user_id=?
+  roles-query: select u.user_id, r.role from spring_boot_user u,user_role ur,role r where u.user_id=ur.user_id and ur.role_id=r.role_id and u.user_id=?
+  
+# ===============================
+# = cronExpression 配置說明
+#   格式：秒 分 時 每月第幾天 月 每星期第幾天 年
+#   不使用以『？』表示 
+#   多個時段以『,』隔開 0 5,10,15 * * * ? => 每小時的5 ,10 ,15分觸發
+# ===============================
+cron:
+  reload-daemon-config-job: 
+    time: "0 0 0/1 * * ?"  #每一小時觸發
