@@ -1,0 +1,10 @@
+.classpath
+.project
+.settings/
+src/front/node/
+src/front/node_modules/
+target/
+src/front/package-lock.json
+src/main/resources/static/css/
+src/main/resources/static/js/
+src/main/resources/templates/index.html
