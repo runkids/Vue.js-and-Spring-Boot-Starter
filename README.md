@@ -12,7 +12,7 @@
 
 - install Node.js / NPM
 
-- instaill MySQL
+- install MySQL
 
 - Clone Repository
 
